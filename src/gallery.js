@@ -40,8 +40,8 @@ export async function fetchImages(query, page, lightbox) {
 
         currentPage += 1;
 
-        const lightbox = new SimpleLightbox('.gallery a', {});
-      lightbox.refresh();
+    //     const lightbox = new SimpleLightbox('.gallery a', {});
+    //   lightbox.refresh();
 
         const { height: cardHeight } = document.querySelector(".gallery").firstElementChild.getBoundingClientRect();
         window.scrollBy({
@@ -49,7 +49,7 @@ export async function fetchImages(query, page, lightbox) {
             behavior: "smooth",
         });
 
-        lightbox.refresh();
+        // lightbox.refresh();
 
     } catch (error) {
         console.error('An error occurred:', error);

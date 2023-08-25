@@ -6,8 +6,12 @@ import { fetchImages } from './gallery';
 const form = document.getElementById('search-form');
 const loadMoreBtn = document.querySelector('.load-more');
 const gallery = document.querySelector('.gallery');
+
 let currentPage = 1;
 let currentQuery = '';
+
+const lightbox = new SimpleLightbox('.gallery a', {});
+// lightbox.refresh();
 
 // Форма пошуку
 form.addEventListener('submit', async (event) => {
@@ -23,7 +27,8 @@ form.addEventListener('submit', async (event) => {
   
   gallery.innerHTML = ''; 
 
-    await fetchImages(currentQuery, 1);
+  await fetchImages(currentQuery, 1);
+  lightbox.refresh();
 });
 
 // "load more" button 
@@ -51,12 +56,13 @@ function handleIntersect(entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
           currentPage +=1
-            fetchImages(currentQuery, currentPage);
+        fetchImages(currentQuery, currentPage);
+        lightbox.refresh();
         }
     });
 }
 
 observer.observe(loadMoreBtn);
 
-const lightbox = new SimpleLightbox('.gallery a', {});
-lightbox.refresh();
+// const lightbox = new SimpleLightbox('.gallery a', {});
+// lightbox.refresh();
