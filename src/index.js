@@ -6,6 +6,7 @@ import { fetchImages } from './gallery';
 const form = document.getElementById('search-form');
 const loadMoreBtn = document.querySelector('.load-more');
 const gallery = document.querySelector('.gallery');
+let currentPage = 1;
 let currentQuery = '';
 
 // Форма пошуку
